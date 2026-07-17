@@ -1,8 +1,9 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-*e&#7%)5lm@-h&0ndhqh&q7q#jrg@4ydl4(ou9%o_h%ailsrm='
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = True
 
@@ -78,8 +79,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL='dashboard'
@@ -88,10 +87,14 @@ LOGIN_URL = 'login'
 
 LOGOUT_URL = 'logout'
 
-STATIC_URL = "static/"
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST_USER=os.environ["EMAIL_HOST_USER"]
+
+EMAIL_HOST_PASSWORD=os.environ["EMAIL_HOST_PASSWORD"]
