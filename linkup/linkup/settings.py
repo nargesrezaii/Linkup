@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from telnetlib import AUTHENTICATION
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,6 +73,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    
 ]
 
 LANGUAGE_CODE = 'en-us'
